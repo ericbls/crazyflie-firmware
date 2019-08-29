@@ -4,12 +4,12 @@
 class Mixer
 {
     private:
-        float sqr_omega1;
-        float sqr_omega2;
-        float sqr_omega3;
-        float sqr_omega4;
+        float omega1;
+        float omega2;
+        float omega3;
+        float omega4;
 
-        int checarRaiz(float x)
+        float checarRaiz(float x)
         {
             if (x>=0.0)
             {
@@ -25,16 +25,24 @@ class Mixer
         {
             return (a2*(x*x))+(a1*x);
         }
+        
+        void mixer(float f_t, float tau_phi, float tau_theta, float tau_psi)
+        {
+            omega1 = checarRaiz((f_t/(4*kl))-(tau_phi/(4*kl*l))-(tau_theta/(4*kl*l))-(tau_psi/(4*kd)));
+            omega2 = checarRaiz((f_t/(4*kl))-(tau_phi/(4*kl*l))+(tau_theta/(4*kl*l))+(tau_psi/(4*kd)));
+            omega3 = checarRaiz((f_t/(4*kl))+(tau_phi/(4*kl*l))+(tau_theta/(4*kl*l))-(tau_psi/(4*kd)));
+            omega4 = checarRaiz((f_t/(4*kl))+(tau_phi/(4*kl*l))-(tau_theta/(4*kl*l))+(tau_psi/(4*kd)));
+        }
 
     public:
     {
         void actuate(float f_t, float tau_phi, float tau_theta, float tau_psi)
         {
             mixer(f_t, tau_phi, tau_theta, tau_psi);
-            motor1 = motorControl(omega_r_1);
-            motor2 = motorControl(omega_r_2);
-            motor3 = motorControl(omega_r_3);
-            motor4 = motorControl(omega_r_4);
+            motor1 = motorControl(omega1);
+            motor2 = motorControl(omega2);
+            motor3 = motorControl(omega3);
+            motor4 = motorControl(omega4);
         }
     }
 
