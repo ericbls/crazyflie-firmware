@@ -1,9 +1,16 @@
 #include "mbed.h"
 #include "crazyflie.h"
 
+// Define motors as PWM output object
+
 class Mixer
 {
     private:
+        PwmOut motor1;
+        PwmOut motor2;
+        PwmOut motor3;
+        PwmOut motor4;
+
         float omega1;
         float omega2;
         float omega3;
@@ -35,7 +42,10 @@ class Mixer
         }
 
     public:
-    {
+        Mixer() : motor1(MOTOR1), motor2(MOTOR2), motor3(MOTOR3), motor4(MOTOR4)
+        {
+
+        }
         void actuate(float f_t, float tau_phi, float tau_theta, float tau_psi)
         {
             mixer(f_t, tau_phi, tau_theta, tau_psi);
@@ -44,6 +54,12 @@ class Mixer
             motor3 = motorControl(omega3);
             motor4 = motorControl(omega4);
         }
-    }
+};
 
+Mixer mixer;
+
+int main()
+{
+    mixer.actuate(0,0,0,-0.001);;
+    return 0;
 }
