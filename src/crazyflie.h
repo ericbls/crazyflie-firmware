@@ -10,4 +10,7 @@
 #include "drivers/vl53l0x.h"
 #include "drivers/pmw3901.h"
 
+// Control Modules
+#include "modules/mixer.h"
+
 #endif
