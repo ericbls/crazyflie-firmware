@@ -78,13 +78,11 @@ class Mixer
             motor3=0.0;
             motor4=0.0;
         }
-
 };
-
-Mixer mixer;
 
 int main()
 {
+    Mixer mixer;
     mixer.arm();
     mixer.actuate(0,0.005,0,0);
     wait(5.0);
