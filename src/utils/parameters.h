@@ -18,4 +18,8 @@ const float a2 = 1.245e-7f;          //sˆ2
 const float a1 = 4.032e-14f;         //s
 const float kl = 1.648e-8f;          //N.sˆ2/radˆ2
 const float kd = 1.047e-10f;         //N.m.sˆ2/radˆ2
+
+// Filtros
+const float alpha = 0.001;             //Constante para filtro passa baixa do estimador de altitude
+
 #endif
