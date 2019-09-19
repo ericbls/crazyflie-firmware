@@ -52,7 +52,7 @@ int main()
             command=serial.getc();
             if(command=='p')
             {
-                serial.printf("%f\n", estimador.phi);
+                serial.printf("%f , %f , %f\n", estimador.phi,estimador.theta,estimador.psi);
             }
         }
     }
