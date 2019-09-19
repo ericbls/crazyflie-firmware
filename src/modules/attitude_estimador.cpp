@@ -22,5 +22,8 @@ void AttitudeEstimador::init()
 //Estimate Euler angles (rad) and angular velocities (rad/s)
 void AttitudeEstimador::estimate()
 {
+    imu.read();
+    float phi_a = imu.ay/imu.az;
+    phi=phi_a;
 
 }
