@@ -22,32 +22,23 @@ void Mixer::arm()
     armed=true;
     led1=true;
     led2=false;
-    wait(1);
+    wait(2);
 
     motor1.period(1/700.0);
+    motor3.period(1/700.0);
     motor1 = 0.1;
-    wait(0.4);
+    motor3 = 0.1;
+    wait(0.2);
     motor1 = 0.0;
+    motor3 = 0.0;
 
-    motor2.period(1/620.0);
+    motor2.period(1/700.0);
+    motor4.period(1/700.0);
     motor2 = 0.1;
-    wait(0.2);
-    motor2 = 0.0;
-
-    motor3.period(1/720.0);
-    motor2 = 0.1;
-    wait(0.2);
-    motor2 = 0.0;
-
-    motor4.period(1/300.0);
     motor4 = 0.1;
-    wait(0.5);
+    wait(0.2);
+    motor2 = 0.0;
     motor4 = 0.0;
-
-    motor1.period(1/680.0);
-    motor1 = 0.1;
-    wait(0.3);
-    motor1 = 0.0;
 }
 
 void Mixer::disarm()

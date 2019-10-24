@@ -13,5 +13,6 @@
 // Control Modules
 #include "modules/mixer.h"
 #include "modules/attitude_estimador.h"
+#include "modules/attitude_controller.h"
 
 #endif

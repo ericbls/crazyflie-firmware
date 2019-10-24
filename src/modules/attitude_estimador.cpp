@@ -4,17 +4,17 @@
 //Class constructor
 AttitudeEstimador::AttitudeEstimador():imu(IMU_SDA, IMU_SCL)
 {
-    phi=0;
-    theta=0;
-    psi=0;
+    phi=0.0;
+    theta=0.0;
+    psi=0.0;
 
-    p=0;
-    q=0;
-    r=0;
+    p=0.0;
+    q=0.0;
+    r=0.0;
 
-    p_bias=0;
-    q_bias=0;
-    r_bias=0;
+    p_bias=0.0;
+    q_bias=0.0;
+    r_bias=0.0;
 }
 
 //Initialize class
@@ -59,7 +59,7 @@ void AttitudeEstimador::estimate()
     float theta_g = theta+(cos(phi)*q-sin(phi)*r)*dt;    
     float psi_g = psi+(sin(phi)*(1/cos(theta))*q+cos(phi)*(1/cos(theta))*r)*dt;
 
-    phi=(1-alpha)*phi_g+alpha*phi_a;
-    theta=(1-alpha)*theta_g+alpha*theta_a;
-    psi = psi_g;
+    phi=(1.0-alpha)*phi_g+alpha*phi_a;
+    theta=(1.0-alpha)*theta_g+alpha*theta_a;
+    psi=psi_g;
 }

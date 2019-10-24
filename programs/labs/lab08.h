@@ -4,8 +4,8 @@
 #include "crazyflie.h"
 
 // Crazyflie constroller objects
-mixer mixer;
-AttitudeEstimator att_est;
+Mixer mixer;
+AttitudeEstimador att_est;
 AttitudeController att_cont;
 
 // Ticker objects
@@ -24,12 +24,13 @@ void callback()
 int main()
 {
     // Set references
-    float f_t=m*g;
+    float f_t=0.2*m*g;
     float phi_r=0.0f;
     float theta_r=0.0f;
     float psi_r=0.0f;
 
     //Initialize estimators objects
+    att_est.init();
     tic.attach(&callback,dt);
 
     //Arm motors and run controller while stable
@@ -39,8 +40,7 @@ int main()
         if (flag)
         {
             flag = false;
-            att_est.predict();
-            att_est.correct();
+            att_est.estimate();
             att_cont.control(phi_r,theta_r,psi_r,att_est.phi,att_est.theta,att_est.psi,att_est.p,att_est.q,att_est.r);
             mixer.actuate(f_t,0.0f,att_cont.tau_theta,0.0f);
         }
