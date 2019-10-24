@@ -24,10 +24,11 @@ void callback()
 int main()
 {
     // Set references
-    float f_t=0.2*m*g;
+    float f_t=0.8*m*g;
     float phi_r=0.0f;
     float theta_r=0.0f;
     float psi_r=0.0f;
+    int counter=0;
 
     //Initialize estimators objects
     att_est.init();
@@ -35,15 +36,16 @@ int main()
 
     //Arm motors and run controller while stable
     mixer.arm();
-    while(abs(att_est.phi)<=pi/4.0f && abs(att_est.theta)<=pi/4.0f && abs(att_est.p)<=4.0f*pi && abs(att_est.q)<=4.0f*pi && abs(att_est.r)<=4.0f*pi)
+    while(abs(att_est.phi)<=pi/4.0f && abs(att_est.theta)<=pi/4.0f && abs(att_est.p)<=4.0f*pi && abs(att_est.q)<=4.0f*pi && abs(att_est.r)<=4.0f*pi && counter<=2000000)
     {
         if (flag)
         {
             flag = false;
             att_est.estimate();
             att_cont.control(phi_r,theta_r,psi_r,att_est.phi,att_est.theta,att_est.psi,att_est.p,att_est.q,att_est.r);
-            mixer.actuate(f_t,0.0f,att_cont.tau_theta,0.0f);
+            mixer.actuate(f_t,att_cont.tau_phi,att_cont.tau_theta,0.0f);
         }
+        counter=counter+1;
     }
     // Disarm motors and end program
     mixer.disarm();
