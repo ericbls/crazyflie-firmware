@@ -1,6 +1,7 @@
 *.mbed
 *.DS_Store
 BUILD
-mbed-os
-USBDevice
 makefile
+.mbed
+USBDEVICE
+mbed-os

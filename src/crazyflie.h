@@ -14,5 +14,6 @@
 #include "modules/mixer.h"
 #include "modules/attitude_estimador.h"
 #include "modules/attitude_controller.h"
+#include "modules/vertical_estimator.h"
 
 #endif

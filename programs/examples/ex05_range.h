@@ -18,6 +18,6 @@ int main()
     {
         range.read();
         serial.printf("Range [m]: %6.2f \n",range.d);
-        wait(0.1);
+        wait_us(100);
     }
 }

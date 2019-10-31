@@ -1,11 +1,12 @@
 #ifndef parameters_h
 #define parameters_h
-#include <math.h>
+#include <cmath>
 
 // Physical constants
 const float pi = 3.1416f;
 const float g = 9.81f;              // m/s^2
 const float dt = 0.002;
+const float dt_range = 0.050;
 
 // Quadcopter dimensions
 const float m = 30e-3f;             // kg
@@ -29,6 +30,8 @@ const float kp_theta = kp_phi;
 const float kd_theta = kd_phi;
 const float kp_psi = 1.0;
 const float kd_psi = 0.1;
+const float rho1 = 0.5;
+const float rho2 = 0.3;
 
 // Filtros
 const float alpha = 0.001;             //Constante para filtro passa baixa do estimador de altitude
