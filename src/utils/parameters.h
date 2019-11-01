@@ -30,8 +30,10 @@ const float kp_theta = kp_phi;
 const float kd_theta = kd_phi;
 const float kp_psi = 1.0;
 const float kd_psi = 0.1;
-const float rho1 = 0.5;
-const float rho2 = 0.3;
+const float L_obs = 20;
+const float L_obs2 = 16;
+const float rho1 = (L_obs*dt_range)/(1+L_obs*dt_range);
+const float rho2 = (L_obs2*dt_range)/(1+L_obs2*dt_range);
 
 // Filtros
 const float alpha = 0.001;             //Constante para filtro passa baixa do estimador de altitude
