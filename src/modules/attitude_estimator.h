@@ -1,5 +1,5 @@
-#ifndef atitude_estimador_h
-#define atitude_estimador_h
+#ifndef atitude_estimator_h
+#define atitude_estimator_h
 
 #include "mbed.h"
 #include "src/utils/pin_names.h"
@@ -7,11 +7,11 @@
 #include "src/drivers/mpu9250.h"
 
 // Attitude estimador class
-class AttitudeEstimador
+class AttitudeEstimator
 {
     public:
     //Class constructor
-    AttitudeEstimador();
+    AttitudeEstimator();
     //Initialize class
     void init();
     //Estimate Euler angles (rad) and angular velocities (rad/s)

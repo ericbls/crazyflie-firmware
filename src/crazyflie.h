@@ -12,8 +12,10 @@
 
 // Control Modules
 #include "modules/mixer.h"
-#include "modules/attitude_estimador.h"
+#include "modules/attitude_estimator.h"
 #include "modules/attitude_controller.h"
 #include "modules/vertical_estimator.h"
+#include "modules/vertical_controller.h"
+#include "modules/horizontal_estimator.h"
 
 #endif

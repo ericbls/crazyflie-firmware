@@ -4,10 +4,10 @@
 // Class constructor
 VerticalEstimator::VerticalEstimator() : range(E_SDA,E_SCL)
 {
-    float z = 0;
-    float w = 0;
-    float z_m_last = 0;
-    float z_last = 0;
+    z = 0;
+    w = 0;
+    z_m_last = 0;
+    z_last = 0;
 }
 
 // Initialize Class

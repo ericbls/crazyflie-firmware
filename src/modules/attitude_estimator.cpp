@@ -1,8 +1,8 @@
 #include "mbed.h"
-#include "attitude_estimador.h"
+#include "attitude_estimator.h"
 
 //Class constructor
-AttitudeEstimador::AttitudeEstimador():imu(IMU_SDA, IMU_SCL)
+AttitudeEstimator::AttitudeEstimator():imu(IMU_SDA, IMU_SCL)
 {
     phi=0.0;
     theta=0.0;
@@ -18,7 +18,7 @@ AttitudeEstimador::AttitudeEstimador():imu(IMU_SDA, IMU_SCL)
 }
 
 //Initialize class
-void AttitudeEstimador::init()
+void AttitudeEstimator::init()
 {
     imu.init();
     for (int i=0; i<500; i++)
@@ -32,7 +32,7 @@ void AttitudeEstimador::init()
 }
 
 //Estimate Euler angles (rad) and angular velocities (rad/s)
-void AttitudeEstimador::estimate()
+void AttitudeEstimator::estimate()
 {
     imu.read();
     

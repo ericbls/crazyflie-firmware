@@ -30,10 +30,17 @@ const float kp_theta = kp_phi;
 const float kd_theta = kd_phi;
 const float kp_psi = 1.0;
 const float kd_psi = 0.1;
+const float kp_z = 5.86;
+const float kd_z = 3.42;
 const float L_obs = 20;
 const float L_obs2 = 16;
 const float rho1 = (L_obs*dt_range)/(1+L_obs*dt_range);
 const float rho2 = (L_obs2*dt_range)/(1+L_obs2*dt_range);
+
+//sensor parameters
+const float w_h = 420.0;
+const float gamma = 42.0;
+const float sigma = (2.0*tan(gamma/2.0))/(w_h*dt);
 
 // Filtros
 const float alpha = 0.001;             //Constante para filtro passa baixa do estimador de altitude
