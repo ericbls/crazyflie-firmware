@@ -16,9 +16,9 @@ class HorizontalEstimator{
 
     void predict(); // predict horizontal velocity and velocity from model
 
-    void correct(float z, float phi, float theta); //correct horizontal position and velocity with measurement
+    void correct(float z, float phi, float theta, float p, float q); //correct horizontal position and velocity with measurement
 
-    float v_hx, v_hy; // horizontal position (m) and velocity (m/s) estimation
+    float u, v, x, y; // horizontal position (m) and velocity (m/s) estimation
 
     private:
 

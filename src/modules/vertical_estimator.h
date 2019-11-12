@@ -23,7 +23,7 @@ class VerticalEstimator{
 
     VL53L0X range; // range sensor object
 
-    float z_m_last, z_last, w_last; // last vertical position measured
+    float z_m_last; // last vertical position measured
 };
 
 #endif

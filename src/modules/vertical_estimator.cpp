@@ -7,7 +7,6 @@ VerticalEstimator::VerticalEstimator() : range(E_SDA,E_SCL)
     z = 0;
     w = 0;
     z_m_last = 0;
-    z_last = 0;
 }
 
 // Initialize Class
@@ -19,8 +18,8 @@ void VerticalEstimator::init()
 // Predict vertical position and velocity from model
 void VerticalEstimator::predict()
 {
-    z=z_last + w * dt_range;
-    w=w_last; 
+    z=z + w * dt;
+    w=w; 
 }
 
 // Correct vertical position and velocity with measurement
@@ -31,7 +30,5 @@ void VerticalEstimator::correct(float phi, float theta)
     float w_m=(z_m-z_m_last)/dt_range;
     z_m_last = z_m;
     z = z+rho2*(z_m-z);
-    z_last = z;
-    w = w + rho1*(w_m -w);
-    w_last = w;
+    w = w+rho1*(w_m -w);
 }
