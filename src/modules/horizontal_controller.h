@@ -1,5 +1,5 @@
-#ifndef vertical_controller_h
-#define vertical_controller_h
+#ifndef horizontal_controller_h
+#define horizontal_controller_h
 
 #include "mbed.h"
 #include "src/utils/parameters.h"
@@ -17,7 +17,7 @@ class HorizontalController
     void control(float x_r, float y_r, float x, float y, float u, float v);
     
     // Total thrust force
-    float ;
+    float phi_r, theta_r;
 
     private:
 

@@ -20,6 +20,8 @@ const float a2 = 1.245e-7f;          //sˆ2
 const float a1 = 4.032e-14f;         //s
 const float kl = 1.648e-8f;          //N.sˆ2/radˆ2
 const float kd = 1.047e-10f;         //N.m.sˆ2/radˆ2
+
+// Constantes de controle atitude
 const float OS = 0.01;
 const float TS = 0.25;
 const float zeta = abs(log(OS))/sqrt(pow(log(OS),2)+pow(pi,2));
@@ -30,14 +32,23 @@ const float kp_theta = kp_phi;
 const float kd_theta = kd_phi;
 const float kp_psi = 1.0;
 const float kd_psi = 0.1;
+
+// Constantes de controle vertical
 const float kp_z = 5.86;
 const float kd_z = 3.42;
-const float kp_h = 10;
-const float kd_h = 4;
 const float L_obs = 20;
 const float L_obs2 = 16;
 const float rho1 = (L_obs*dt_range)/(1+L_obs*dt_range);
 const float rho2 = (L_obs2*dt_range)/(1+L_obs2*dt_range);
+
+// Constantes de controle horizontal
+const float OS_h = 0.05;
+const float TS_h = 4.0;
+const float zeta_h = abs(log(OS_h))/sqrt(pow(log(OS_h),2)+pow(pi,2));
+const float wn_h = 4.0/(zeta_h*TS_h);
+const float kp_h = pow(wn_h,2);   
+const float kd_h = 2.0*zeta_h*wn_h;
+const float alpha_hor = 0.4;
 
 //sensor parameters
 const float w_h = 420.0;

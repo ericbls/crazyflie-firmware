@@ -3,7 +3,7 @@
 
 #include "mbed.h"
 #include "crazyflie.h"
-#include "USBSerial.h"
+#include "src/utils/parameters.h"
 
 // Horizontal estimator class
 class HorizontalEstimator{
