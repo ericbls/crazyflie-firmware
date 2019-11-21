@@ -24,16 +24,16 @@ void Mixer::arm()
     led2=false;
     wait(2);
 
-    motor1.period(1/700.0);
-    motor3.period(1/700.0);
+    motor1.period(1/500.0);
+    motor3.period(1/500.0);
     motor1 = 0.1;
     motor3 = 0.1;
     wait(0.2);
     motor1 = 0.0;
     motor3 = 0.0;
 
-    motor2.period(1/700.0);
-    motor4.period(1/700.0);
+    motor2.period(1/500.0);
+    motor4.period(1/500.0);
     motor2 = 0.1;
     motor4 = 0.1;
     wait(0.2);

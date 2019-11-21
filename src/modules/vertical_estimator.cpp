@@ -19,16 +19,19 @@ void VerticalEstimator::init()
 void VerticalEstimator::predict()
 {
     z=z + w * dt;
-    w=w; 
+//    w=w; 
 }
 
 // Correct vertical position and velocity with measurement
 void VerticalEstimator::correct(float phi, float theta)
 {
     range.read();
+    if (range.d <= 2.0)
+    {
     float z_m=range.d*cos(phi)*cos(theta);
     float w_m=(z_m-z_m_last)/dt_range;
     z_m_last = z_m;
     z = z+rho2*(z_m-z);
     w = w+rho1*(w_m -w);
+    }
 }

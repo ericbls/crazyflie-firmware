@@ -52,12 +52,26 @@ void AttitudeEstimator::estimate()
     psi=psi+r*dt;
     */
 
-    float phi_a = atan2(-imu.ay,-imu.az);
-    float theta_a = atan2(imu.ax, (sqrt(pow(imu.ay,2)+pow(imu.az,2))));
-    
-    float phi_g = phi+(p+sin(phi)*tan(theta)*q+cos(phi)*tan(theta)*r)*dt;
-    float theta_g = theta+(cos(phi)*q-sin(phi)*r)*dt;    
-    float psi_g = psi+(sin(phi)*(1/cos(theta))*q+cos(phi)*(1/cos(theta))*r)*dt;
+    float phi_a;
+    float theta_a;
+    float phi_g;
+    float theta_g;
+    float psi_g;
+
+    phi_a = atan2(-imu.ay,-imu.az);
+    theta_a = atan2(imu.ax, (sqrt(pow(imu.ay,2)+pow(imu.az,2))));
+
+    if (theta>=85.0*pi/180.0 && theta<=95.0*pi/180.0)
+    {
+        phi_g = phi+(p+sin(phi)*tan(theta)*q+cos(phi)*tan(theta)*r)*dt;
+        theta_g = theta+(cos(phi)*q-sin(phi)*r)*dt;    
+        psi_g = psi+(sin(phi)*(1.0/cos(85.0*pi/180.0))*q+cos(phi)*(1.0/cos(85.0*pi/180.0))*r)*dt;
+    } else
+    {
+        phi_g = phi+(p+sin(phi)*tan(theta)*q+cos(phi)*tan(theta)*r)*dt;
+        theta_g = theta+(cos(phi)*q-sin(phi)*r)*dt;    
+        psi_g = psi+(sin(phi)*(1.0/cos(theta))*q+cos(phi)*(1.0/cos(theta))*r)*dt;   
+    }
 
     phi=(1.0-alpha)*phi_g+alpha*phi_a;
     theta=(1.0-alpha)*theta_g+alpha*theta_a;
